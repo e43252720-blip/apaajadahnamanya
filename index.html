@@ -3,32 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KUROMI'S SECRET BIRTHDAY BOMB</title>
+  <title>🎀 Kuromi's Birthday Surprise</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <!-- Optional: Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-  <div class="kuromi-spy">
+  <!-- Background decorations -->
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  
+  <!-- Kuromi Character -->
+  <div class="kuromi-character">
     <img src="assets/kuromi.png" alt="Kuromi" id="kuromi-img" />
+    <div class="speech-bubble">Psst... ada hadiah nih! 💜</div>
   </div>
 
-  <h1>HAPPY BIRTHDAY</h1>
-  <p>from someone who doesn’t exist</p>
+  <!-- Main Content -->
+  <div class="container">
+    <div class="card">
+      <h1>🎂 HAPPY BIRTHDAY! 🎂</h1>
+      <p class="subtitle">from someone mysterious... 👻</p>
+      
+      <!-- Countdown -->
+      <div class="countdown-box">
+        <p class="countdown-title">🎁 Hadiah Spesial Terbuka Dalam:</p>
+        <div id="timer" class="timer">...</div>
+        <p class="countdown-subtitle">27 Oktober 2025 ✨</p>
+      </div>
 
-  <div id="countdown" class="countdown">⏳ Hadiah akan terbuka dalam: <span id="timer">...</span></div>
+      <!-- Button -->
+      <button id="boom" class="btn-boom">
+        <span>💥 KLIK AKU!</span>
+      </button>
 
-  <button id="boom">💥 KLIK UNTUK MELEDAK</button>
-  <div class="secret">*Kuromi approved. No love. Just chaos.*</div>
+      <p class="footer-text">*Kuromi approved — No drama, just fun!* 🖤</p>
+    </div>
+  </div>
+
+  <!-- Gift Modal -->
+  <div id="gift-modal" class="modal hidden">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>🎁 HADIAH DARI KUROMI!</h2>
+        <button id="close-gift" class="close-btn">✖</button>
+      </div>
+      <div class="modal-body">
+        <p id="gift-message">Loading...</p>
+      </div>
+    </div>
+  </div>
 
   <audio id="explosion" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-explosion-2756.mp3" preload="auto"></audio>
-  <audio id="kuromi-laugh" src="https://assets.mixkit.co/sfx/preview/mixkit-spooky-laugh-2479.mp3" preload="auto"></audio>
-
-  <div id="gift-box" class="gift-box hidden">
-    <h2>🎁 HADIAH RAHASIA KUROMI</h2>
-    <p id="gift-message">Loading...</p>
-    <button id="close-gift">❌ TUTUP</button>
-  </div>
+  <audio id="kuromi-laugh" src="https://assets.mixkit.co/sfx/preview/mixkit-cartoon-giggle-89.mp3" preload="auto"></audio>
 
   <script src="script.js"></script>
 </body>
