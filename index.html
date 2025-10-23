@@ -5,16 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KUROMI'S SECRET BIRTHDAY BOMB</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- Optional: Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-  <div class="kuromi-spy">😈</div>
+  <div class="kuromi-spy">
+    <img src="assets/kuromi.png" alt="Kuromi" id="kuromi-img" />
+  </div>
+
   <h1>HAPPY BIRTHDAY</h1>
   <p>from someone who doesn’t exist</p>
+
+  <div id="countdown" class="countdown">⏳ Hadiah akan terbuka dalam: <span id="timer">...</span></div>
+
   <button id="boom">💥 KLIK UNTUK MELEDAK</button>
   <div class="secret">*Kuromi approved. No love. Just chaos.*</div>
 
   <audio id="explosion" src="https://assets.mixkit.co/sfx/preview/mixkit-arcade-game-explosion-2756.mp3" preload="auto"></audio>
-  <!-- Optional: ganti sound dengan file lokal atau hapus kalau gak mau suara -->
+  <audio id="kuromi-laugh" src="https://assets.mixkit.co/sfx/preview/mixkit-spooky-laugh-2479.mp3" preload="auto"></audio>
+
+  <div id="gift-box" class="gift-box hidden">
+    <h2>🎁 HADIAH RAHASIA KUROMI</h2>
+    <p id="gift-message">Loading...</p>
+    <button id="close-gift">❌ TUTUP</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
