@@ -5,44 +5,53 @@
 }
 
 body {
-  background: #000;
-  color: #f0f;
+  background: #0a0011;
+  color: #ff00ff;
   font-family: 'Orbitron', sans-serif;
   text-align: center;
   padding: 2rem;
   margin: 0;
   overflow-x: hidden;
-  animation: bgPulse 5s infinite alternate;
+  animation: bgPulse 6s infinite alternate;
   min-height: 100vh;
   position: relative;
   transition: background 0.5s ease;
 }
 
 @keyframes bgPulse {
-  from { background: #000; }
-  to { background: #110022; }
+  from { background: #0a0011; }
+  to { background: #1a0022; }
 }
 
 .kuromi-spy {
-  font-size: 4rem;
-  margin: 1rem 0;
-  animation: peek 3s infinite ease-in-out;
   position: absolute;
   top: 10px;
   right: 20px;
   z-index: 10;
+  animation: peek 3s infinite ease-in-out;
+}
+
+#kuromi-img {
+  width: 60px;
+  height: auto;
+  filter: drop-shadow(0 0 5px #ff00ff);
+  transition: transform 0.3s ease;
+}
+
+#kuromi-img:hover {
+  transform: scale(1.2) rotate(-10deg);
 }
 
 @keyframes peek {
-  0% { transform: translateY(0); opacity: 0.5; }
-  50% { transform: translateY(-10px); opacity: 1; }
-  100% { transform: translateY(0); opacity: 0.5; }
+  0% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
+  50% { transform: translateY(-10px) rotate(5deg); opacity: 1; }
+  100% { transform: translateY(0) rotate(0deg); opacity: 0.5; }
 }
 
 h1 {
   font-size: 3rem;
   margin: 1rem 0;
-  text-shadow: 0 0 10px #f0f, 0 0 20px #ff00ff;
+  text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff;
   letter-spacing: 2px;
   animation: shake 0.5s ease-in-out infinite alternate;
 }
@@ -56,6 +65,22 @@ p {
   font-size: 1.2rem;
   opacity: 0.8;
   margin-bottom: 2rem;
+}
+
+.countdown {
+  font-size: 1.1rem;
+  margin: 1.5rem 0;
+  padding: 0.5rem;
+  background: rgba(255, 0, 255, 0.1);
+  border-radius: 8px;
+  display: inline-block;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
 }
 
 button {
@@ -90,19 +115,71 @@ button:active {
   font-style: italic;
 }
 
+/* Gift Box */
+.gift-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #1a0022;
+  padding: 2rem;
+  border: 2px solid #ff00ff;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
+  z-index: 100;
+  max-width: 80%;
+  width: 400px;
+  animation: giftPop 0.5s ease-out;
+}
+
+@keyframes giftPop {
+  from { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
+  to { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+.gift-box.hidden {
+  display: none;
+}
+
+.gift-box h2 {
+  margin-bottom: 1rem;
+  color: #ff00ff;
+  text-shadow: 0 0 5px #ff00ff;
+}
+
+.gift-box p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+#close-gift {
+  background: #ff00ff;
+  color: #000;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+}
+
 /* Mobile Responsif */
 @media (max-width: 768px) {
   h1 {
     font-size: 2.2rem;
   }
   .kuromi-spy {
-    font-size: 3rem;
     top: 5px;
     right: 10px;
+  }
+  #kuromi-img {
+    width: 40px;
   }
   button {
     padding: 0.8rem 1.5rem;
     font-size: 1rem;
+  }
+  .gift-box {
+    width: 90%;
+    padding: 1.5rem;
   }
 }
 
