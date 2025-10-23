@@ -1,40 +1,22 @@
 const boomBtn = document.getElementById('boom');
 const explosionSound = document.getElementById('explosion');
 const kuromiLaugh = document.getElementById('kuromi-laugh');
-const secretDiv = document.querySelector('.secret');
-const countdownEl = document.getElementById('timer');
-const giftBox = document.getElementById('gift-box');
+const timerEl = document.getElementById('timer');
+const giftModal = document.getElementById('gift-modal');
 const giftMessage = document.getElementById('gift-message');
 const closeGiftBtn = document.getElementById('close-gift');
+const kuromiImg = document.getElementById('kuromi-img');
 let clickCount = 0;
 
 // Target Date: 27 Oktober 2025
 const targetDate = new Date('2025-10-27T00:00:00').getTime();
 
-// Pesan random
+// Pesan random lucu
 const messages = [
-  "Kuromi bilang: Lo udah tua, jangan sok muda.",
-  "HBD. Jangan lupa bayar tagihan.",
-  "Ini bukan cinta, ini peringatan: lo lahir lagi hari ini.",
-  "Kuromi ngeliat lo dari tempat sampah. Selamat ya.",
-  "Jangan senyum-senyum. Ini serius. Tapi lucu.",
-  "Lo sekarang punya 1 hari lebih banyak buat bikin masalah. Selamat!",
-  "Kuromi nyiapin kue... tapi dijatuhin. Maaf."
-];
-
-// Hadiah Rahasia (bisa diganti teksnya)
-const giftText = `
-🎉 SELAMAT! LO SUKSES MENUNGGU SAMPAI 27 OKTOBER 2025!
-
-Kuromi kasih lo:
-✨ Satu hari tanpa tanggung jawab
-✨ Satu jam ngeliat Kuromi ngejail
-✨ Satu kue yang udah dijatuhin (tapi tetep enak)
-
-Dan satu pesan rahasia:
-> "Kuromi sebenernya sayang lo. Tapi jangan bilang dia bilang gitu."
-
-P.S. Lo keren banget nunggu sampe sekarang. 💀🖤
+  "Kuromi bilang: Happy birthday! Jangan lupa makan sayur ya~ 🥦",
+  "Selamat ulang tahun! Kuromi kasih kamu satu hari bebas drama 💜",
+  "Happy birthday! Kuromi udah nyiapin kue... tapi dimakan duluan 🎂",
+  "Ultah lagi nih! Kuromi doain kamu makin imut (tapi gak bakal ngalahin KuromiP.S. Lo keren banget nunggu sampe sekarang. 💀🖤
 `;
 
 // Update Countdown
