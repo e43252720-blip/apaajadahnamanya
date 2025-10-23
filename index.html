@@ -3,38 +3,160 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🎀 Kuromi's Birthday Surprise</title>
+  <title>🎀 Kuromi's Secret Birthday Portal</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800;900&family=Pacifico&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-  <!-- Background decorations -->
-  <div class="stars"></div>
-  <div class="stars2"></div>
+  <!-- Particle Background -->
+  <div id="particles-js"></div>
   
-  <!-- Kuromi Character -->
-  <div class="kuromi-character">
-    <img src="assets/kuromi.png" alt="Kuromi" id="kuromi-img" />
-    <div class="speech-bubble">Psst... ada hadiah nih! 💜</div>
+  <!-- Music Toggle -->
+  <button id="music-toggle" class="music-btn">🎵</button>
+  
+  <!-- Scene 1: Intro -->
+  <section id="intro-scene" class="scene active">
+    <div class="intro-content">
+      <div class="kuromi-entrance">
+        <img src="assets/kuromi.png" alt="Kuromi" class="kuromi-intro" />
+      </div>
+      <h1 class="glitch" data-text="WARNING!">WARNING!</h1>
+      <p class="intro-text">You've been invited to a secret birthday portal...</p>
+      <p class="intro-subtext">Kuromi has something special prepared 💜</p>
+      <button id="enter-btn" class="neon-btn">
+        <span>ENTER PORTAL</span>
+        <div class="neon-btn-glow"></div>
+      </button>
+    </div>
+    <div class="scroll-indicator">
+      <div class="mouse"></div>
+    </div>
+  </section>
+
+  <!-- Scene 2: Main Birthday -->
+  <section id="main-scene" class="scene">
+    <div class="floating-kuromis">
+      <img src="assets/kuromi.png" class="floating-kuromi k1" />
+      <img src="assets/kuromi.png" class="floating-kuromi k2" />
+      <img src="assets/kuromi.png" class="floating-kuromi k3" />
+    </div>
+
+    <div class="main-container">
+      <div class="glass-card">
+        <div class="card-header">
+          <h2 class="rainbow-text">🎂 HAPPY BIRTHDAY 🎂</h2>
+          <div class="sparkles">✨✨✨</div>
+        </div>
+
+        <div class="birthday-message">
+          <p class="from-text">From: <span class="mystery">████████</span></p>
+          <p class="tagline">Someone who thinks you're pretty cool 😎</p>
+        </div>
+
+        <!-- Countdown Section -->
+        <div class="countdown-container">
+          <h3 class="countdown-title">🎁 SPECIAL GIFT UNLOCKS IN:</h3>
+          <div class="countdown-display">
+            <div class="time-unit">
+              <span class="time-number" id="days">00</span>
+              <span class="time-label">DAYS</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+              <span class="time-number" id="hours">00</span>
+              <span class="time-label">HOURS</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+              <span class="time-number" id="minutes">00</span>
+              <span class="time-label">MINS</span>
+            </div>
+            <div class="time-separator">:</div>
+            <div class="time-unit">
+              <span class="time-number" id="seconds">00</span>
+              <span class="time-label">SECS</span>
+            </div>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress"></div>
+          </div>
+          <p class="unlock-date">📅 October 27, 2025</p>
+        </div>
+
+        <!-- Interactive Buttons -->
+        <div class="btn-group">
+          <button id="cake-btn" class="action-btn btn-pink">
+            <span>🎂</span>
+            <span>GET CAKE</span>
+          </button>
+          <button id="surprise-btn" class="action-btn btn-purple">
+            <span>🎉</span>
+            <span>SURPRISE ME</span>
+          </button>
+          <button id="gift-btn" class="action-btn btn-gradient" disabled>
+            <span>🎁</span>
+            <span id="gift-btn-text">LOCKED</span>
+          </button>
+        </div>
+
+        <div class="easter-egg-hint">
+          💡 Tip: Click on the floating Kuromis...
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gift Modal -->
+  <div id="gift-modal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button id="close-modal" class="close-modal">✕</button>
+      <div class="gift-box">
+        <div class="gift-box-3d">
+          <div class="gift-lid">
+            <div class="bow"></div>
+          </div>
+          <div class="gift-base"></div>
+        </div>
+      </div>
+      <div class="gift-reveal">
+        <h2 class="gift-title">🎁 YOUR SPECIAL GIFT! 🎁</h2>
+        <div class="gift-content" id="gift-content">
+          <!-- Will be filled by JS -->
+        </div>
+      </div>
+    </div>
   </div>
 
-  <!-- Main Content -->
-  <div class="container">
-    <div class="card">
-      <h1>🎂 HAPPY BIRTHDAY! 🎂</h1>
-      <p class="subtitle">from someone mysterious... 👻</p>
-      
-      <!-- Countdown -->
-      <div class="countdown-box">
-        <p class="countdown-title">🎁 Hadiah Spesial Terbuka Dalam:</p>
-        <div id="timer" class="timer">...</div>
-        <p class="countdown-subtitle">27 Oktober 2025 ✨</p>
+  <!-- Easter Egg Modal -->
+  <div id="easter-egg-modal" class="modal">
+    <div class="modal-overlay"></div>
+    <div class="modal-content small">
+      <button class="close-modal" onclick="closeEasterEgg()">✕</button>
+      <div class="easter-egg-content">
+        <img src="assets/kuromi.png" class="easter-kuromi" />
+        <p id="easter-message"></p>
       </div>
+    </div>
+  </div>
 
-      <!-- Button -->
+  <!-- Audio Elements -->
+  <audio id="bg-music" loop>
+    <source src="https://assets.mixkit.co/music/preview/mixkit-tech-house-vibes-130.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="click-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-select-click-1109.mp3"></audio>
+  <audio id="pop-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-balloon-pop-2061.mp3"></audio>
+  <audio id="magic-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-magic-spell-2467.mp3"></audio>
+  <audio id="tada-sound" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3"></audio>
+
+  <!-- Libraries -->
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>      <!-- Button -->
       <button id="boom" class="btn-boom">
         <span>💥 KLIK AKU!</span>
       </button>
